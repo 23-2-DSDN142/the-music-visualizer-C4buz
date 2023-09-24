@@ -2,12 +2,21 @@
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-//text to write several words at once
-//text to fade away from left to right
+
+//To do List
 //Leaves growing over time
 //Set Up
 //Italic on 'Wasteland, baby!'
+//Make last words fade
+//Dont want 'thats it' to read
 //Can we load images?
+// fade to black
+
+//Loading image sequences and assets is in NUKU
+//animate the alpha value 
+//if statement+ counter + assets
+//four loops
+//find a counter thing that reads as you play to know where to make changes.
 
 background(49, 74, 87)
 ellipseMode (CENTER) //Co-ordinates from centre not corner
@@ -39,7 +48,7 @@ curveVertex (Leafx+27,Leafy+170);
 curveVertex (Leafx+31,Leafy+150);
 curveVertex (Leafx+31,Leafy+150);
 endShape (CLOSE);
-
+  
 beginShape ();
 curveVertex (Leafx+38,Leafy+190);
 curveVertex (Leafx+38,Leafy+190);
@@ -47,9 +56,11 @@ curveVertex (Leafx+42,Leafy+170);
 curveVertex (Leafx+31,Leafy+150);
 curveVertex (Leafx+31,Leafy+150);
 endShape (CLOSE);
+
   
 //Middle Circle 
 fill (middleColor)
+strokeWeight (0)
 ellipse (width/2, height/6*4,300+vocal,300+vocal)
 
 //Lyrics 
