@@ -1,5 +1,7 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
+const canvasWidth = 640;
+const canvasHeight = 360;
+
+//Only Touch canvas Width and Height in this js 
 
 
 let mainCanvas;
