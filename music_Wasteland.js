@@ -4,16 +4,25 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
 //To do List
-//Leaves growing over time
-//Set Up
-//Can we load images?
 
+//Want fireflys to only turn on once he starts singing - fade in from black
+// how to console log counter
 
-//Loading image sequences and assets is in NUKU
 //animate the alpha value 
 //if statement+ counter + assets
-//four loops
 //find a counter thing that reads as you play to know where to make changes.
+
+let blueColor = color (91, 124, 130)
+let darkblueColor = color (24, 27, 41)
+strokeWeight (3)
+
+for (let i = 0; i<500; i++){
+    let gradientAmount = map (i,0,500,0,1)
+    let strokeColor = lerpColour (blueColor, darkblueColor, gradientAmount)
+    stroke (strokeColor)
+
+    line (0,100+i,width, 100+i, height)
+}
 
 background(49, 74, 87)
 ellipseMode (CENTER) //Co-ordinates from centre not corner
@@ -21,8 +30,7 @@ textFont('TIMES'); // please use CSS safe fonts
 rectMode(CENTER)
 textSize(30);
 
-//how to limit firefly size?
-//Want fireflys to only turn on once he starts singing
+draw_images(vocal, drum, bass, other)
 
 
 //Firefly
@@ -33,7 +41,7 @@ let firefly_h = 0
 
 //Glow
 let glowsize = 15
-let fireflysize = map (bass,0,100,0,glowsize)
+let fireflyMap = map (bass,0,100,0,glowsize)
 
 let yellow = color(222, 171, 78)
 let bright = color (255, 248, 199)
@@ -42,7 +50,7 @@ let fireflyfill = lerpColor (yellow,bright,LerpMap)
 
 fill (fireflyfill)
 strokeWeight (0)
-ellipse (firefly_x+92,firefly_y+96,fireflysize+4,fireflysize)
+ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap)
 
 //firefly body
 fill (59, 48, 41)
@@ -79,12 +87,25 @@ line (114,100,116,104)
 line (105,100,103,104)
 line (101,100,99,104)
 
-
-
-
-
-
-  
-
  
+}
+
+
+let firstRun = true
+let Grass = [];
+function draw_images(vocal,drum,bass,other){
+if (firstRun) {
+  Grass.push(loadImage('grass_0.png'));
+  Grass.push(loadImage('grass_1.png'));
+  Grass.push(loadImage('grass_2.png'));
+
+  firstRun = false
+}
+
+var VocalFrame = int (map(vocal,0,100,0,3));
+console.log(VocalFrame);
+push();
+scale(0.15);
+image(Grass[VocalFrame],width/2,height/2)
+pop();
 }
