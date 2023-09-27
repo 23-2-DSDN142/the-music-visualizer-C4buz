@@ -45,7 +45,7 @@ strokeWeight (0)
 ellipse (firefly_x+92,firefly_y+96,fireflysize+4,fireflysize)
 
 //firefly body
-fill (69, 55, 48)
+fill (59, 48, 41)
 beginShape ();
 curveVertex (124,90);
 curveVertex (95,92); 
@@ -72,6 +72,13 @@ endShape ();
 
 ellipse (firefly_x+125,firefly_y+93,firefly_w+8,firefly_h+6) // neck
 ellipse (firefly_x+131,firefly_y+94,firefly_w+6,firefly_h+7) // head
+
+//legs
+line (118,100,120,104)
+line (114,100,116,104)
+line (105,100,103,104)
+line (101,100,99,104)
+
 
 
 

@@ -1,5 +1,5 @@
-const canvasWidth = 640;
-const canvasHeight = 360;
+const canvasWidth = 1440;
+const canvasHeight = 810;
 
 //Only Touch canvas Width and Height in this js 
 
