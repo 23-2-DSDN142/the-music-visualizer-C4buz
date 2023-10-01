@@ -5,24 +5,27 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 //To do List
 
-//Want fireflys to only turn on once he starts singing - fade in from black
 // how to console log counter
+//how to get background to change over the duration of a song
 
-//animate the alpha value 
-//if statement+ counter + assets
-//find a counter thing that reads as you play to know where to make changes.
+//How to stop moon from workin unil he starts singng
+//how to get grass growing over time
 
-let blueColor = color (91, 124, 130)
-let darkblueColor = color (24, 27, 41)
-strokeWeight (3)
+//how to animate the alpha value 
+//how to get firefly glow grdient working
 
-for (let i = 0; i<500; i++){
-    let gradientAmount = map (i,0,500,0,1)
-    let strokeColor = lerpColour (blueColor, darkblueColor, gradientAmount)
-    stroke (strokeColor)
 
-    line (0,100+i,width, 100+i, height)
-}
+// let blueColor = color (91, 124, 130)
+// let darkblueColor = color (24, 27, 41)
+// strokeWeight (3)
+
+// for (let i = 0; i<500; i++){
+//     let gradientAmount = map (i,0,500,0,1)
+//     let strokeColor = lerpColour (blueColor, darkblueColor, gradientAmount)
+//     stroke (strokeColor)
+
+//     line (0,100+i,width, 100+i, height)
+// }
 
 background(49, 74, 87)
 ellipseMode (CENTER) //Co-ordinates from centre not corner
@@ -32,6 +35,10 @@ textSize(30);
 
 draw_images(vocal, drum, bass, other)
 
+//moon
+strokeWeight (0)
+fill (255)
+ellipse (width/2,height/2,100+vocal,100+vocal)
 
 //Firefly
 let firefly_x = 0
@@ -40,12 +47,12 @@ let firefly_w = 0
 let firefly_h = 0
 
 //Glow
-let glowsize = 15
-let fireflyMap = map (bass,0,100,0,glowsize)
+let glowsize = 30
+let fireflyMap = map (drum,0,100,0,glowsize)
 
 let yellow = color(222, 171, 78)
 let bright = color (255, 248, 199)
-let LerpMap = map (bass,0,200,0,1)
+let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
 
 fill (fireflyfill)
@@ -86,13 +93,12 @@ line (118,100,120,104)
 line (114,100,116,104)
 line (105,100,103,104)
 line (101,100,99,104)
-
- 
 }
 
 
 let firstRun = true
 let Grass = [];
+
 function draw_images(vocal,drum,bass,other){
 if (firstRun) {
   Grass.push(loadImage('grass_0.png'));
@@ -102,10 +108,15 @@ if (firstRun) {
   firstRun = false
 }
 
-var VocalFrame = int (map(vocal,0,100,0,3));
+var VocalFrame = int (map(other,0,100,0,3));
 console.log(VocalFrame);
 push();
 scale(0.15);
 image(Grass[VocalFrame],width/2,height/2)
 pop();
+
+
 }
+
+
+
