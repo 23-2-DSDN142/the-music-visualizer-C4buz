@@ -27,17 +27,20 @@ let duskBottom = color (151, 194, 175)
 let nightTop = color (5, 14, 36)
 let nightBottom = color (41, 48, 64)
 
-let dusk = lerpColor (duskBottom,duskTop, skyMap)
-let night = lerpColor (nightBottom, nightTop, skyMap)
+let top = lerpColor (duskTop, nightTop, skyMap)
+let bottom = lerpColor (duskBottom, nightBottom, skyMap)
 
 
 for (let i = 0; i<height; i++){
 
-    let strokeMap= map(i,0,height-300, 0, 1);
-    let backgroundChange = lerpColor (dusk,night,strokeMap)
+    let strokeMap= map(i,0,height, 0, 1);
+    let backgroundChange = lerpColor (bottom,top,strokeMap)
    
     stroke(backgroundChange);
-    line(0, i, width, i)
+    strokeWeight(1.5)
+    noFill()
+    // line(0, i, width, i)
+    ellipse(width/2, height, width + i, 500 + i*2)
 
 }
 
