@@ -2,49 +2,67 @@
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
+console.log (song.currentTime())
 
-//To do List
-
-// how to console log counter
-//how to get background to change over the duration of a song
-
-//How to stop moon from workin unil he starts singng
 //how to get grass growing over time
 
 //how to animate the alpha value 
-//how to get firefly glow grdient working
-
-
-// let blueColor = color (91, 124, 130)
-// let darkblueColor = color (24, 27, 41)
-// strokeWeight (3)
-
-// for (let i = 0; i<500; i++){
-//     let gradientAmount = map (i,0,500,0,1)
-//     let strokeColor = lerpColour (blueColor, darkblueColor, gradientAmount)
-//     stroke (strokeColor)
-
-//     line (0,100+i,width, 100+i, height)
-// }
 
 background(49, 74, 87)
-ellipseMode (CENTER) //Co-ordinates from centre not corner
-textFont('TIMES'); // please use CSS safe fonts
+ellipseMode (CENTER)
 rectMode(CENTER)
+textFont('TIMES'); // please use CSS safe fonts
 textSize(30);
-
 draw_images(vocal, drum, bass, other)
 
-//moon
+
+
+//Gradient Background 
+
+let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
+
+let duskTop = color (77, 101, 138)
+let duskBottom = color (151, 194, 175)
+
+let nightTop = color (5, 14, 36)
+let nightBottom = color (41, 48, 64)
+
+let dusk = lerpColor (duskBottom,duskTop, skyMap)
+let night = lerpColor (nightBottom, nightTop, skyMap)
+
+
+for (let i = 0; i<height; i++){
+
+    let strokeMap= map(i,0,height-300, 0, 1);
+    let backgroundChange = lerpColor (dusk,night,strokeMap)
+   
+    stroke(backgroundChange);
+    line(0, i, width, i)
+
+}
+
+
+// Vocal moon
+
+if (song.currentTime()> 25.5) {
 strokeWeight (0)
 fill (255)
-ellipse (width/2,height/2,100+vocal,100+vocal)
+ellipse (width/2,height/2,100+vocal,100+vocal);
+  } else {
+strokeWeight (0)
+fill (255)
+ellipse (width/2,height/2,100+vocal-30,100+vocal-30);
+  }
+   
+
+
 
 //Firefly
 let firefly_x = 0
 let firefly_y = 0
 let firefly_w = 0
 let firefly_h = 0
+
 
 //Glow
 let glowsize = 30
@@ -58,6 +76,16 @@ let fireflyfill = lerpColor (yellow,bright,LerpMap)
 fill (fireflyfill)
 strokeWeight (0)
 ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap)
+
+
+// let glowArray = [color(),color(),color(),color()] //create a firefly glow glow, want the alpha value to change
+
+// for(let 1=0, 1<=5,i++){
+    
+//     fill (glowArray)
+//     ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap)
+// }
+
 
 //firefly body
 fill (59, 48, 41)
