@@ -1,11 +1,11 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 let firstRun = true
-let glowImg;
+let glowLeftImg;
+let glowRightImg;
+let glowTopImg;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-
-
 
 console.log (song.currentTime())
 
@@ -16,7 +16,7 @@ textFont('TIMES'); // please use CSS safe fonts
 textSize(30);
 
 
-//Gradient Background 
+// Gradient Background 
 
 // let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
 
@@ -46,53 +46,84 @@ textSize(30);
 
 
 // Vocal moon
+let moonYStart = height/6*4;
+let moonYEnd = height/ 8;
 
-if (song.currentTime()> 25.5) {
+let whenSingingStart = 25.5;
+
+let moonYMap= map(song.currentTime(), whenSingingStart ,song.duration(), moonYStart, moonYEnd);
+
+
+if (song.currentTime() < whenSingingStart) {
 strokeWeight (0)
 fill (255)
-ellipse (width/2,height/2,100+vocal,100+vocal);
+ellipse (width/2,moonYStart,100+vocal-40,100+vocal-40);
   } else {
 strokeWeight (0)
 fill (255)
-ellipse (width/2,height/2,100+vocal-30,100+vocal-30);
+ellipse (width/2,moonYMap,100+vocal,100+vocal);
   }
+
    
 //Firefly
+let LEFTx_adjustment =7
+let LEFTy_adjustment = 35
+let RIGHTx_adjustment =34
+let RIGHTy_adjustment = 34
 
-let firefly_x = 0
-let firefly_y = 0
-let firefly_w = 0
-let firefly_h = 0
+let firefly1_x = 920
+let firefly1_y = 3085
 
-//Glow
-
-if (firstRun) {
-glowImg = loadImage ('glow.png');
-firstRun = false
-}
-push()
-image(glowImg,100,100)
-pop()
-
+let firefly2_x = 9000
+let firefly2_y = 4200
 
 let glowsize = 20
-let outerglowsize = 60
+let outerglowsize = 80
 let fireflyMap = map (drum,0,100,0,glowsize)
 let outerfireflyMap = map (drum,0,100,0,outerglowsize)
 
-let yellow = color(222, 171, 78)
-let bright = color (255, 255, 255)
+let yellow = color(204, 152, 80)
+let bright = color (252, 239, 189)
 let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
 
 strokeWeight (0)
+//Firefly 1
+fill (fireflyfill) //light
+ellipse (firefly1_x*0.15+LEFTx_adjustment,firefly1_y*0.15+LEFTy_adjustment,fireflyMap+2,fireflyMap+2)
 
-fill (255, 179, 87,30)
-ellipse (firefly_x+92,firefly_y+96,outerfireflyMap+20,outerfireflyMap+20)
+fill (255, 179, 87,50) //Glow
+ellipse (firefly1_x*0.15+LEFTx_adjustment,firefly1_y*0.15+LEFTy_adjustment,outerfireflyMap,outerfireflyMap)
 
+//Firefly 2
+fill (fireflyfill) //light
+ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,fireflyMap+2,fireflyMap+2)
 
-fill (fireflyfill)
-ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap+4)
+fill (255, 179, 87,50) //Glow
+ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
+
+if (firstRun) {
+
+    glowLeftImg = loadImage ('glowLeft.png');
+    glowRightImg = loadImage ('glowRight.png');
+    glowTopImg = loadImage ('glowTop.png');
+    firstRun = false
+    }
+
+push()
+scale (0.15)
+image(glowLeftImg,firefly1_x,firefly1_y)
+pop()    
+
+push()
+scale (0.15)
+image(glowRightImg,9000,4200)
+pop()  
+
+push()
+scale (0.15)
+image(glowTopImg,7000,4085)
+pop()  
 
 
 // let glowArray = [color(),color(),color(),color()] //create a firefly glow glow, want the alpha value to change
@@ -104,40 +135,7 @@ ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap+4)
 // }
 
 
-//firefly body
-fill (59, 48, 41)
-beginShape ();
-curveVertex (124,90);
-curveVertex (95,92); 
-curveVertex (95,99);
-curveVertex (120,100);
-endShape (CLOSE); 
 
-ellipse (firefly_x+125,firefly_y+93,firefly_w+8,firefly_h+6) // neck
-ellipse (firefly_x+131,firefly_y+94,firefly_w+6,firefly_h+7) // head
-
-//firefly body outline
-noFill()
-strokeWeight (1)
-stroke (36, 35, 32)
-beginShape ();
-curveVertex (124,90);
-curveVertex (124,90);
-curveVertex (95,92); 
-curveVertex (95,99);
-curveVertex (120,100);
-curveVertex (124,95);
-curveVertex (124,95);
-endShape (); 
-
-ellipse (firefly_x+125,firefly_y+93,firefly_w+8,firefly_h+6) // neck
-ellipse (firefly_x+131,firefly_y+94,firefly_w+6,firefly_h+7) // head
-
-//legs
-line (118,100,120,104)
-line (114,100,116,104)
-line (105,100,103,104)
-line (101,100,99,104)
 }
 
 
