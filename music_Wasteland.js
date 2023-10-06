@@ -4,6 +4,11 @@ let firstRun = true
 let glowLeftImg;
 let glowRightImg;
 let glowTopImg;
+let gardenbaseImg;
+let fern4Img;
+let fern3Img;
+let fern1Img;
+let fern2Img;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
@@ -18,30 +23,30 @@ textSize(30);
 
 // Gradient Background 
 
-// let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
+let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
 
-// let duskTop = color (77, 101, 138)
-// let duskBottom = color (151, 194, 175)
+let duskTop = color (77, 101, 138)
+let duskBottom = color (151, 194, 175)
 
-// let nightTop = color (5, 14, 36)
-// let nightBottom = color (41, 48, 64)
+let nightTop = color (5, 14, 36)
+let nightBottom = color (41, 48, 64)
 
-// let top = lerpColor (duskTop, nightTop, skyMap)
-// let bottom = lerpColor (duskBottom, nightBottom, skyMap)
+let top = lerpColor (duskTop, nightTop, skyMap)
+let bottom = lerpColor (duskBottom, nightBottom, skyMap)
 
 
-// for (let i = 0; i<height; i++){
+for (let i = 0; i<height; i++){
 
-//     let strokeMap= map(i,0,height, 0, 1);
-//     let backgroundChange = lerpColor (bottom,top,strokeMap)
+    let strokeMap= map(i,0,height, 0, 1);
+    let backgroundChange = lerpColor (bottom,top,strokeMap)
    
-//     stroke(backgroundChange);
-//     strokeWeight(1.5)
-//     noFill()
-//     line(0, i, width, i)
-//     ellipse(width/2, height, width + i, 500 + i*2)
+    stroke(backgroundChange);
+    strokeWeight(1.5)
+    noFill()
+    line(0, i, width, i)
+    ellipse(width/2, height, width + i, 500 + i*2)
 
-// }
+}
 
 
 
@@ -63,6 +68,59 @@ strokeWeight (0)
 fill (255)
 ellipse (width/2,moonYMap,100+vocal,100+vocal);
   }
+
+  if (firstRun) {
+
+    glowLeftImg = loadImage ('glowLeft.png');
+    glowRightImg = loadImage ('glowRight.png');
+    glowTopImg = loadImage ('glowTop.png');
+    gardenbaseImg = loadImage ('gardenbase.png')
+    fern4Img = loadImage ('fern4.png')
+    grassImg = loadImage ('grass.png')
+    fern3Img = loadImage ('fern3.png')
+    fern1Img = loadImage ('fern1.png')
+    fern2Img = loadImage ('fern2.png')
+    
+    firstRun = false
+    }
+
+
+//gardenbase
+push()
+scale (0.5)
+image(gardenbaseImg,0,0)
+pop()    
+
+//Fern 4
+push()
+scale (0.5)
+image(fern4Img,0,0)
+pop() 
+
+//grass
+push()
+scale (0.5)
+image(grassImg,0,0)
+pop() 
+
+//Fern 3
+push()
+scale (0.5)
+image(fern3Img,0,0)
+pop() 
+
+//Fern 1
+push()
+scale (0.5)
+image(fern1Img,0,0)
+pop() 
+
+//Fern 2
+push()
+scale (0.5)
+image(fern2Img,0,0)
+pop() 
+
 
    
 //Firefly
@@ -102,13 +160,6 @@ ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,fir
 fill (255, 179, 87,50) //Glow
 ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
 
-if (firstRun) {
-
-    glowLeftImg = loadImage ('glowLeft.png');
-    glowRightImg = loadImage ('glowRight.png');
-    glowTopImg = loadImage ('glowTop.png');
-    firstRun = false
-    }
 
 push()
 scale (0.15)
