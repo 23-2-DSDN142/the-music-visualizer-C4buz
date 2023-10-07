@@ -10,6 +10,7 @@ let fern3Img;
 let fern1Img;
 let fern2Img;
 let moonImg;
+let mushroomsImg; 
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
@@ -33,6 +34,7 @@ if (firstRun) {
   fern1Img = loadImage ('fern1.png')
   fern2Img = loadImage ('fern2.png')
   moonImg = loadImage ('moon.png')
+  mushroomImg = loadImage ('mushroom.png')
   
   firstRun = false
   }
@@ -40,30 +42,30 @@ if (firstRun) {
 
 // Gradient Background 
 
-let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
+// let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
 
-let duskTop = color (31, 62, 89)
-let duskBottom = color (81, 140, 138)
+// let duskTop = color (31, 62, 89)
+// let duskBottom = color (81, 140, 138)
 
-let nightTop = color (22, 26, 33)
-let nightBottom = color (41, 48, 64)
+// let nightTop = color (22, 26, 33)
+// let nightBottom = color (41, 48, 64)
 
-let top = lerpColor (duskTop, nightTop, skyMap)
-let bottom = lerpColor (duskBottom, nightBottom, skyMap)
+// let top = lerpColor (duskTop, nightTop, skyMap)
+// let bottom = lerpColor (duskBottom, nightBottom, skyMap)
 
 
-for (let i = 0; i<height; i++){
+// for (let i = 0; i<height; i++){
 
-    let strokeMap= map(i,0,height, 0, 1);
-    let backgroundChange = lerpColor (bottom,top,strokeMap)
+//     let strokeMap= map(i,0,height, 0, 1);
+//     let backgroundChange = lerpColor (bottom,top,strokeMap)
    
-    stroke(backgroundChange);
-    strokeWeight(1.5)
-    noFill()
-    line(0, i, width, i)
-    ellipse(width/2, height, width + i, 500 + i*2)
+//     stroke(backgroundChange);
+//     strokeWeight(1.5)
+//     noFill()
+//     line(0, i, width, i)
+//     ellipse(width/2, height, width + i, 500 + i*2)
 
-}
+// }
 
 
 
@@ -109,7 +111,14 @@ if (song.currentTime() < whenSingingStart) {
 //gardenbase
 push()
 scale (0.5)
-image(gardenbaseImg,0,0)
+image(gardenbaseImg,0,-15)
+pop()    
+
+//mushroom
+let mushroomJump = map(bass,0,100,0,40)
+push()
+scale (0.5)
+image(mushroomImg,1,0-mushroomJump)
 pop()    
 
 //Fern 4
@@ -119,6 +128,7 @@ image(fern4Img,0,0)
 pop() 
 
 //grass
+
 push()
 scale (0.5)
 image(grassImg,0,0)
@@ -131,8 +141,10 @@ image(fern3Img,0,0)
 pop() 
 
 //Fern 1
+let FernSway = map(bass,0,100,0,2)
 push()
 scale (0.5)
+rotate (FernSway)
 image(fern1Img,0,0)
 pop() 
 
