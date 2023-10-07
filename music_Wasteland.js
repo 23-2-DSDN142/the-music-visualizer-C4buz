@@ -9,6 +9,7 @@ let fern4Img;
 let fern3Img;
 let fern1Img;
 let fern2Img;
+let moonImg;
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
@@ -20,15 +21,31 @@ rectMode(CENTER)
 textFont('TIMES'); // please use CSS safe fonts
 textSize(30);
 
+if (firstRun) {
+
+  glowLeftImg = loadImage ('glowLeft.png');
+  glowRightImg = loadImage ('glowRight.png');
+  glowTopImg = loadImage ('glowTop.png');
+  gardenbaseImg = loadImage ('gardenbase.png')
+  fern4Img = loadImage ('fern4.png')
+  grassImg = loadImage ('grass.png')
+  fern3Img = loadImage ('fern3.png')
+  fern1Img = loadImage ('fern1.png')
+  fern2Img = loadImage ('fern2.png')
+  moonImg = loadImage ('moon.png')
+  
+  firstRun = false
+  }
+
 
 // Gradient Background 
 
 let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
 
-let duskTop = color (77, 101, 138)
-let duskBottom = color (151, 194, 175)
+let duskTop = color (31, 62, 89)
+let duskBottom = color (81, 140, 138)
 
-let nightTop = color (5, 14, 36)
+let nightTop = color (22, 26, 33)
 let nightBottom = color (41, 48, 64)
 
 let top = lerpColor (duskTop, nightTop, skyMap)
@@ -51,38 +68,42 @@ for (let i = 0; i<height; i++){
 
 
 // Vocal moon
-let moonYStart = height/6*4;
-let moonYEnd = height/ 8;
+
+let moonYStart = 1200;
+let moonX = 7200
+let moonYEnd = -200;
 
 let whenSingingStart = 25.5;
 
 let moonYMap= map(song.currentTime(), whenSingingStart ,song.duration(), moonYStart, moonYEnd);
-
+let moonScale= map (vocal,0,100,0,50)
 
 if (song.currentTime() < whenSingingStart) {
-strokeWeight (0)
-fill (255)
-ellipse (width/2,moonYStart,100+vocal-40,100+vocal-40);
-  } else {
-strokeWeight (0)
-fill (255)
-ellipse (width/2,moonYMap,100+vocal,100+vocal);
-  }
+  strokeWeight (0)
+  push()
+  scale (0.1)
+  image(moonImg,moonX,moonYStart)
+  pop()   
+    } else {
 
-  if (firstRun) {
+  push()
+  scale (0.1)
+  image(moonImg,moonX,moonYMap)
+  pop() 
 
-    glowLeftImg = loadImage ('glowLeft.png');
-    glowRightImg = loadImage ('glowRight.png');
-    glowTopImg = loadImage ('glowTop.png');
-    gardenbaseImg = loadImage ('gardenbase.png')
-    fern4Img = loadImage ('fern4.png')
-    grassImg = loadImage ('grass.png')
-    fern3Img = loadImage ('fern3.png')
-    fern1Img = loadImage ('fern1.png')
-    fern2Img = loadImage ('fern2.png')
-    
-    firstRun = false
     }
+    
+ 
+
+// if (song.currentTime() < whenSingingStart) {
+// strokeWeight (0)
+// fill (255)
+// ellipse (width/2,moonYStart,100+vocal-40,100+vocal-40);
+//   } else {
+// strokeWeight (0)
+// fill (255)
+// ellipse (width/2,moonYMap,100+vocal,100+vocal);
+//   }
 
 
 //gardenbase
@@ -140,8 +161,8 @@ let outerglowsize = 80
 let fireflyMap = map (drum,0,100,0,glowsize)
 let outerfireflyMap = map (drum,0,100,0,outerglowsize)
 
-let yellow = color(204, 152, 80)
-let bright = color (252, 239, 189)
+let yellow = color(254, 255, 232)
+let bright = color (204, 152, 80)
 let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
 
