@@ -71,32 +71,29 @@ if (firstRun) {
 
 // Vocal moon
 
-let moonYStart = 1200;
-let moonX = 7200
-let moonYEnd = -200;
+let moonYStart = 700;
+let moonX = width/2
+let moonYEnd = 100;
 
 let whenSingingStart = 25.5;
 
 let moonYMap= map(song.currentTime(), whenSingingStart ,song.duration(), moonYStart, moonYEnd);
-let moonScale= map (vocal,0,100,0,50)
+let moonScale= map (vocal,0,100,0,1.5)
 
 if (song.currentTime() < whenSingingStart) {
   strokeWeight (0)
   push()
-  scale (0.1)
   image(moonImg,moonX,moonYStart)
   pop()   
     } else {
 
   push()
-  scale (0.1)
   image(moonImg,moonX,moonYMap)
   pop() 
 
     }
     
- 
-
+  
 // if (song.currentTime() < whenSingingStart) {
 // strokeWeight (0)
 // fill (255)
@@ -128,10 +125,10 @@ image(fern4Img,0,0)
 pop() 
 
 //grass
-
+let grassJump = map (other, 0,100,0,40)
 push()
 scale (0.5)
-image(grassImg,0,0)
+image(grassImg,0,0-grassJump)
 pop() 
 
 //Fern 3
@@ -141,10 +138,8 @@ image(fern3Img,0,0)
 pop() 
 
 //Fern 1
-let FernSway = map(bass,0,100,0,2)
 push()
 scale (0.5)
-rotate (FernSway)
 image(fern1Img,0,0)
 pop() 
 
@@ -161,15 +156,20 @@ let LEFTx_adjustment =7
 let LEFTy_adjustment = 35
 let RIGHTx_adjustment =34
 let RIGHTy_adjustment = 34
+let TOPx_adjustment = 11
+let TOPy_adjustment = 40
 
-let firefly1_x = 920
-let firefly1_y = 3085
+let firefly1_x = 1100
+let firefly1_y = 4100
 
 let firefly2_x = 9000
 let firefly2_y = 4200
 
+let firefly3_x = 5900
+let firefly3_y = 3800
+
 let glowsize = 20
-let outerglowsize = 80
+let outerglowsize = 120
 let fireflyMap = map (drum,0,100,0,glowsize)
 let outerfireflyMap = map (drum,0,100,0,outerglowsize)
 
@@ -179,12 +179,18 @@ let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
 
 strokeWeight (0)
+
 //Firefly 1
 fill (fireflyfill) //light
 ellipse (firefly1_x*0.15+LEFTx_adjustment,firefly1_y*0.15+LEFTy_adjustment,fireflyMap+2,fireflyMap+2)
 
 fill (255, 179, 87,50) //Glow
 ellipse (firefly1_x*0.15+LEFTx_adjustment,firefly1_y*0.15+LEFTy_adjustment,outerfireflyMap,outerfireflyMap)
+
+push()
+scale (0.15)
+image(glowLeftImg,firefly1_x,firefly1_y)
+pop()  
 
 //Firefly 2
 fill (fireflyfill) //light
@@ -193,20 +199,24 @@ ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,fir
 fill (255, 179, 87,50) //Glow
 ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
 
-
 push()
 scale (0.15)
-image(glowLeftImg,firefly1_x,firefly1_y)
-pop()    
-
-push()
-scale (0.15)
-image(glowRightImg,9000,4200)
+image(glowRightImg,firefly2_x,firefly2_y)
 pop()  
 
+//Firefly 3
+
+fill (fireflyfill) //light
+ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,fireflyMap+2,fireflyMap+2)
+
+fill (255, 179, 87,50) //Glow
+ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,outerfireflyMap,outerfireflyMap)
+  
+
+
 push()
 scale (0.15)
-image(glowTopImg,7000,4085)
+image(glowTopImg,firefly3_x,firefly3_y)
 pop()  
 
 
