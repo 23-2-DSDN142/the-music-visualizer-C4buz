@@ -23,7 +23,6 @@ textFont('TIMES'); // please use CSS safe fonts
 textSize(30);
 
 if (firstRun) {
-
   glowLeftImg = loadImage ('glowLeft.png');
   glowRightImg = loadImage ('glowRight.png');
   glowTopImg = loadImage ('glowTop.png');
@@ -70,7 +69,6 @@ if (firstRun) {
 
 
 // Vocal moon
-
 let moonYStart = 700;
 let moonX = width/2
 let moonYEnd = 100;
@@ -148,8 +146,6 @@ push()
 scale (0.5)
 image(fern2Img,0,0)
 pop() 
-
-
    
 //Firefly
 let LEFTx_adjustment =7
@@ -212,8 +208,6 @@ ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,firefly
 fill (255, 179, 87,50) //Glow
 ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,outerfireflyMap,outerfireflyMap)
   
-
-
 push()
 scale (0.15)
 image(glowTopImg,firefly3_x,firefly3_y)
