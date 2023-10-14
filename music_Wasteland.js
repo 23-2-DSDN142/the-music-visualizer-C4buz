@@ -69,14 +69,15 @@ if (firstRun) {
 
 
 // Vocal moon
-let moonYStart = 700;
-let moonX = width/2
+let moonYStart = 720;
+let moonX = width/2-140
 let moonYEnd = 100;
 
 let whenSingingStart = 25.5;
 
 let moonYMap= map(song.currentTime(), whenSingingStart ,song.duration(), moonYStart, moonYEnd);
-let moonScale= map (vocal,0,100,0,1.5)
+let moonScale= map (vocal,0,100,1,1.2)
+
 
 if (song.currentTime() < whenSingingStart) {
   strokeWeight (0)
@@ -84,13 +85,21 @@ if (song.currentTime() < whenSingingStart) {
   image(moonImg,moonX,moonYStart)
   pop()   
     } else {
-
+  strokeWeight(0)
+  fill (255,255,255,50)
+  ellipse (width/2+10,moonYMap+160,300*moonScale,300*moonScale)
+  ellipse (width/2+10,moonYMap+160,350*moonScale,350*moonScale)
+      
   push()
   image(moonImg,moonX,moonYMap)
   pop() 
 
+  
+
     }
-    
+
+  
+ 
   
 // if (song.currentTime() < whenSingingStart) {
 // strokeWeight (0)
@@ -106,14 +115,14 @@ if (song.currentTime() < whenSingingStart) {
 //gardenbase
 push()
 scale (0.5)
-image(gardenbaseImg,0,-15)
+image(gardenbaseImg,0,0)
 pop()    
 
 //mushroom
 let mushroomJump = map(bass,0,100,0,40)
 push()
 scale (0.5)
-image(mushroomImg,1,0-mushroomJump)
+image(mushroomImg,1,10-mushroomJump)
 pop()    
 
 //Fern 4
@@ -126,7 +135,7 @@ pop()
 let grassJump = map (other, 0,100,0,40)
 push()
 scale (0.5)
-image(grassImg,0,0-grassJump)
+image(grassImg,0,30-grassJump)
 pop() 
 
 //Fern 3
@@ -163,6 +172,9 @@ let firefly2_y = 4200
 
 let firefly3_x = 5900
 let firefly3_y = 3800
+
+let firefly4_x = 200
+let firefly4_y = 2400
 
 let glowsize = 20
 let outerglowsize = 120
@@ -212,6 +224,19 @@ push()
 scale (0.15)
 image(glowTopImg,firefly3_x,firefly3_y)
 pop()  
+
+//Firefly 4
+
+fill (fireflyfill) //light
+ellipse (firefly4_x*0.15+RIGHTx_adjustment,firefly4_y*0.15+RIGHTy_adjustment,fireflyMap+2,fireflyMap+2)
+
+fill (255, 179, 87,50) //Glow
+ellipse (firefly4_x*0.15+RIGHTx_adjustment,firefly4_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
+  
+push()
+scale (0.15)
+image(glowRightImg,firefly4_x,firefly4_y)
+pop() 
 
 
 // let glowArray = [color(),color(),color(),color()] //create a firefly glow glow, want the alpha value to change
