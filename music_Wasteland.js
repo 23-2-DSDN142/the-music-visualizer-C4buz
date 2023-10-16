@@ -128,7 +128,7 @@ pop()
 //Fern 4
 push()
 scale (0.5)
-image(fern4Img,0,0)
+image(fern4Img,0,30)
 pop() 
 
 //grass
@@ -185,6 +185,7 @@ let yellow = color(254, 255, 232)
 let bright = color (204, 152, 80)
 let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
+let glow = color (255, 179, 87,50)
 
 strokeWeight (0)
 
@@ -204,7 +205,7 @@ pop()
 fill (fireflyfill) //light
 ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,fireflyMap+2,fireflyMap+2)
 
-fill (255, 179, 87,50) //Glow
+fill (glow) //Glow
 ellipse (firefly2_x*0.15+RIGHTx_adjustment,firefly2_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
 
 push()
@@ -217,7 +218,7 @@ pop()
 fill (fireflyfill) //light
 ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,fireflyMap+2,fireflyMap+2)
 
-fill (255, 179, 87,50) //Glow
+fill (glow) //Glow
 ellipse (firefly3_x*0.15+TOPx_adjustment,firefly3_y*0.15+TOPy_adjustment,outerfireflyMap,outerfireflyMap)
   
 push()
@@ -230,13 +231,74 @@ pop()
 fill (fireflyfill) //light
 ellipse (firefly4_x*0.15+RIGHTx_adjustment,firefly4_y*0.15+RIGHTy_adjustment,fireflyMap+2,fireflyMap+2)
 
-fill (255, 179, 87,50) //Glow
+fill (glow) //Glow
 ellipse (firefly4_x*0.15+RIGHTx_adjustment,firefly4_y*0.15+RIGHTy_adjustment,outerfireflyMap,outerfireflyMap)
   
 push()
 scale (0.15)
 image(glowRightImg,firefly4_x,firefly4_y)
 pop() 
+
+
+//Far away firelies
+//how to have multiple ifs 
+
+if (drum <30) {
+   //Lower fireflies 
+  fill (fireflyfill)
+  ellipse (50,300, fireflyMap-2,fireflyMap-2)
+  fill (glow)
+  ellipse (50,300,fireflyMap+5,fireflyMap+5)
+
+  fill (fireflyfill)
+  ellipse (500,600, fireflyMap-2,fireflyMap-2)
+  fill (glow)
+  ellipse (500,600,fireflyMap+5,fireflyMap+5)
+
+  fill (fireflyfill)
+  ellipse (1100,550, fireflyMap-2,fireflyMap-2)
+  fill (glow)
+  ellipse (1100,550,fireflyMap+5,fireflyMap+5)
+
+  fill (fireflyfill)
+  ellipse (1300,500, fireflyMap-2,fireflyMap-2)
+  fill (glow)
+  ellipse (1300,500,fireflyMap+5,fireflyMap+5)
+
+
+  } 
+  
+  else {
+    //Lower fireflies 
+    fill (fireflyfill)
+    ellipse (50,300, fireflyMap-2,fireflyMap-2)
+    fill (glow)
+    ellipse (50,300,fireflyMap+5,fireflyMap+5)
+  
+    fill (fireflyfill)
+    ellipse (500,600, fireflyMap-2,fireflyMap-2)
+    fill (glow)
+    ellipse (500,600,fireflyMap+5,fireflyMap+5)
+  
+    fill (fireflyfill)
+    ellipse (1100,550, fireflyMap-2,fireflyMap-2)
+    fill (glow)
+    ellipse (1100,550,fireflyMap+5,fireflyMap+5)
+  
+    fill (fireflyfill)
+    ellipse (1300,500, fireflyMap-2,fireflyMap-2)
+    fill (glow)
+    ellipse (1300,500,fireflyMap+5,fireflyMap+5)
+
+
+    //Upper fireflies
+    }
+
+
+
+
+
+// create cirlces with gradually more transparent fills
 
 
 // let glowArray = [color(),color(),color(),color()] //create a firefly glow glow, want the alpha value to change
