@@ -14,6 +14,21 @@ let mushroomsImg;
 let duskImg;
 let nightImg;
 
+let treeImg;
+let tree2Img;
+let treeshineImg;
+
+let grass1Img;
+let grass2Img;
+let grass3Img;
+let grass4Img;
+let grass5Img;
+let grass6Img;
+let grass7Img;
+let grass8Img;
+let grass9Img;
+let grass10Img;
+
 let pos;
 let wobble = 0
 let size = 100
@@ -42,6 +57,22 @@ if (firstRun) {
   mushroomImg = loadImage ('mushroom.png')
   duskImg = loadImage ('dusk.png')
   nightImg = loadImage ('night.png')
+
+  treeImg = loadImage ('tree.png')
+  tree2Img = loadImage ('tree2.png')
+  treeshineImg = loadImage ('treeshine.png')
+
+  grass1Img = loadImage ('grass1.png')
+  grass2Img = loadImage ('grass2.png')
+  grass3Img = loadImage ('grass3.png')
+  grass4Img = loadImage ('grass4.png')
+  grass5Img = loadImage ('grass5.png')
+  grass6Img = loadImage ('grass6.png')
+  grass7Img = loadImage ('grass7.png')
+  grass8Img = loadImage ('grass8.png')
+  grass9Img = loadImage ('grass9.png')
+  grass10Img = loadImage ('grass10.png')
+  
   
   firstRun = false
   }
@@ -65,6 +96,12 @@ let firefly3_y = 3800
 let firefly4_x = 200
 let firefly4_y = 2400
 
+let firefly5_x = 6720
+let firefly5_y = 4400
+
+let firefly6_x = 200
+let firefly6_y = 4900
+
 let glowsize = 20
 let outerglowsize = 120
 let fireflyMap = map (drum,0,100,0,glowsize)
@@ -79,20 +116,6 @@ let glow = color (255, 179, 87,40)
 
 // Gradient Background 
 
-
-
-// let skymap = map(song.currentTime(), 0,256, 0, 1);
-
-// let duskcolor = color(65, 101, 115)
-// let nightcolor = color (12, 18, 28)
-
-// let skylerp = lerpColor (duskcolor,nightcolor,skymap)
-
-// push()
-// fill (skylerp)
-// rect(720,405,1440,810)
-// pop()
-
 skymap2 = map(song.currentTime(), 0,256, 255,0 );
 
 push()
@@ -104,32 +127,6 @@ tint(255,skymap2)
 image (duskImg,0,0)
 pop()
 
-// let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
-
-// let duskTop = color (31, 62, 89)
-// let duskBottom = color (81, 140, 138)
-
-// let nightTop = color (22, 26, 33)
-// let nightBottom = color (41, 48, 64)
-
-// let top = lerpColor (duskTop, nightTop, skyMap)
-// let bottom = lerpColor (duskBottom, nightBottom, skyMap)
-
-
-// for (let i = 0; i<height; i++){
-
-//     let strokeMap= map(i,0,height, 0, 1);
-//     let backgroundChange = lerpColor (bottom,top,strokeMap)
-   
-//     stroke(backgroundChange);
-//     strokeWeight(1.5)
-//     noFill()
-//     line(0, i, width, i)
-//     ellipse(width/2, height, width + i, 500 + i*2)
-
-// }
-
-
 
 // Vocal moon
 
@@ -137,8 +134,8 @@ let moonYStart = 720;
 let moonX = width/2-140
 let moonYEnd = 100;
 
-let whenSingingStart = 27;
-let whenSingingEnd = 256;
+let whenSingingStart = 25.5;
+let whenSingingEnd = 240;
 
 let moonYMap= map(song.currentTime(), whenSingingStart ,whenSingingEnd, moonYStart, moonYEnd);
 let moonScale= map (vocal,0,100,1,1.2)
@@ -146,13 +143,9 @@ let moonScale1= map (vocal,0,100,1,1.3)
 let moonScale2 = map (vocal, 0,100, 1,1.5)
 let moonScale3 = map (vocal, 0,100, 1,1.7)
 
-let moonOpacitymap= map (vocal,0,100,255,100)
-
-
 if (song.currentTime() < whenSingingStart) {
   strokeWeight (0)
   push()
-  tint(255,moonOpacitymap)
   image(moonImg,moonX,moonYStart)
   pop()   
 
@@ -166,10 +159,45 @@ if (song.currentTime() < whenSingingStart) {
   ellipse (width/2+12,moonYMap+155,270*moonScale3,270*moonScale3)
 
   push()
+  
   image(moonImg,moonX,moonYMap)
   pop() 
 
     }
+
+let treeshineheight = map (song.currentTime(), whenSingingStart ,whenSingingEnd, 50, 240 )
+let treeshine = map (vocal,0,100,treeshineheight,255)
+
+
+if (song.currentTime() < whenSingingStart) {
+
+push()
+scale(0.5)
+image(treeImg,0,0)
+pop()
+
+} else{
+
+push()
+scale(0.5)
+tint (255,moonYMap)
+image(treeImg,0,0)
+pop()
+
+push()
+scale(0.5)
+image(tree2Img,0,0)
+pop()
+
+push()
+scale(0.5)
+tint (255,treeshine)
+image(treeshineImg,0,0)
+pop()
+
+}
+
+
   
 
 // let littlefireflyMap = map (drum,0,100,0,15)
@@ -237,28 +265,92 @@ image(fern4Img,0,30)
 pop() 
 
 //grass
-let grassJump = map (other, 0,100,0,40)
+let grassJump = map (other, 0,100,0,60)
+let grassJump2 = map (other, 0,100,0,70)
+let grassJump3 = map (other, 0,100,0,20)
+
+// push()
+// scale (0.5)
+// image(grassImg,0,30-grassJump)
+// pop() 
+
+//Grass 1
 push()
 scale (0.5)
-image(grassImg,0,30-grassJump)
+image(grass1Img,0,50-grassJump3)
 pop() 
+
+//Grass 2
+push()
+scale (0.5)
+image(grass2Img,0,50-grassJump2)
+pop() 
+
+//Grass 3
+push()
+scale (0.5)
+image(grass3Img,0,50-grassJump)
+pop() 
+
+//Grass 4
+push()
+scale (0.5)
+image(grass4Img,0,50-grassJump3)
+pop() 
+
+//Grass 5
+push()
+scale (0.5)
+image(grass5Img,0,50-grassJump2)
+pop() 
+
+//Grass 6
+push()
+scale (0.5)
+image(grass6Img,0,50-grassJump3)
+pop() 
+
+//Grass 7
+push()
+scale (0.5)
+image(grass7Img,0,50-grassJump)
+pop() 
+
+//Grass 8
+push()
+scale (0.5)
+image(grass8Img,0,50-grassJump2)
+pop() 
+
+//Grass 9
+push()
+scale (0.5)
+image(grass9Img,0,50-grassJump)
+pop() 
+
+//Grass 10
+push()
+scale (0.5)
+image(grass10Img,0,50-grassJump2)
+pop() 
+
 
 //Fern 3
 push()
 scale (0.5)
-image(fern3Img,0,0)
+image(fern3Img,0,50)
 pop() 
 
 //Fern 1
 push()
 scale (0.5)
-image(fern1Img,0,0)
+image(fern1Img,0,50)
 pop() 
 
 //Fern 2
 push()
 scale (0.5)
-image(fern2Img,0,0)
+image(fern2Img,0,50)
 pop() 
    
 //Firefly
@@ -275,6 +367,7 @@ push()
 scale (0.15)
 image(glowLeftImg,firefly1_x,firefly1_y)
 pop()  
+
 
 //Firefly 2
 fill (fireflyfill) //light
@@ -313,6 +406,33 @@ push()
 scale (0.15)
 image(glowRightImg,firefly4_x,firefly4_y)
 pop() 
+
+//Firefly 5
+
+fill (fireflyfill) //light
+ellipse (firefly5_x*0.15+LEFTx_adjustment,firefly5_y*0.15+LEFTy_adjustment,fireflyMap+2,fireflyMap+2)
+
+fill (255, 179, 87,50) //Glow
+ellipse (firefly5_x*0.15+LEFTx_adjustment,firefly5_y*0.15+LEFTy_adjustment,outerfireflyMap,outerfireflyMap)
+
+push()
+scale (0.15)
+image(glowLeftImg,firefly5_x,firefly5_y)
+pop()  
+
+// Firefly 6
+fill (fireflyfill) //light
+ellipse (firefly6_x*0.15+TOPx_adjustment,firefly6_y*0.15+TOPy_adjustment,fireflyMap+2,fireflyMap+2)
+
+fill (glow) //Glow
+ellipse (firefly6_x*0.15+TOPx_adjustment,firefly6_y*0.15+TOPy_adjustment,outerfireflyMap,outerfireflyMap)
+  
+push()
+scale (0.15)
+image(glowTopImg,firefly6_x,firefly6_y)
+pop()  
+
+
 
 
 
