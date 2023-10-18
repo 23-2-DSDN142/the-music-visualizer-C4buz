@@ -197,54 +197,6 @@ pop()
 
 }
 
-
-  
-
-// let littlefireflyMap = map (drum,0,100,0,15)
-// let littlefireflycolourMap = map (drum,0,100,0,100)
-
-// let littleglow = color (255, 179, 87,littlefireflycolourMap)
-// let littlefill = color (254, 255, 232)
-
-//     if (drum <100) {
-//       //Lower little fireflies 
-//      fill (littlefill)
-//      ellipse (20,270, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (20,270,littlefireflyMap+4,littlefireflyMap+4)
-    
-//      fill (littlefill)
-//      ellipse (500,610, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (500,610,littlefireflyMap+4,littlefireflyMap+4)
-    
-//      fill (littlefill)
-//      ellipse (550,700, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (550,700,littlefireflyMap+4,littlefireflyMap+4)
-    
-//      fill (littlefill)
-//      ellipse (1100,550, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (1100,550,littlefireflyMap+4,littlefireflyMap+4)
-    
-//      fill (littlefill)
-//      ellipse (1400,350, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (1400,350,littlefireflyMap+4,littlefireflyMap+4)
-    
-//      fill (littlefill)
-//      ellipse (1320,475, littlefireflyMap-2,littlefireflyMap-2)
-//      fill (littleglow)
-//      ellipse (1320,475,littlefireflyMap+4,littlefireflyMap+4)
-        
-//      } 
-     
-//      else {
-//        //Lower little fireflies 
-    
-//            //Upper fireflies
-//        }
 //gardenbase
 push()
 scale (0.5)
@@ -265,92 +217,88 @@ image(fern4Img,0,30)
 pop() 
 
 //grass
-let grassJump = map (other, 0,100,0,60)
-let grassJump2 = map (other, 0,100,0,70)
-let grassJump3 = map (other, 0,100,0,20)
+let grassJump = map (other, 0,100,0,72)
+let grassJump2 = map (other, 0,100,0,90)
+let grassJump3 = map (other, 0,100,0,100)
 
-// push()
-// scale (0.5)
-// image(grassImg,0,30-grassJump)
-// pop() 
 
 //Grass 1
 push()
 scale (0.5)
-image(grass1Img,0,50-grassJump3)
+image(grass1Img,0,70-grassJump3)
 pop() 
 
 //Grass 2
 push()
 scale (0.5)
-image(grass2Img,0,50-grassJump2)
+image(grass2Img,0,70-grassJump2)
 pop() 
 
 //Grass 3
 push()
 scale (0.5)
-image(grass3Img,0,50-grassJump)
+image(grass3Img,0,70-grassJump)
 pop() 
 
 //Grass 4
 push()
 scale (0.5)
-image(grass4Img,0,50-grassJump3)
+image(grass4Img,0,70-grassJump3)
 pop() 
 
 //Grass 5
 push()
 scale (0.5)
-image(grass5Img,0,50-grassJump2)
+image(grass5Img,0,70-grassJump2)
 pop() 
 
 //Grass 6
 push()
 scale (0.5)
-image(grass6Img,0,50-grassJump3)
+image(grass6Img,0,70-grassJump3)
 pop() 
 
 //Grass 7
 push()
 scale (0.5)
-image(grass7Img,0,50-grassJump)
+image(grass7Img,0,70-grassJump)
 pop() 
 
 //Grass 8
 push()
 scale (0.5)
-image(grass8Img,0,50-grassJump2)
+image(grass8Img,0,70-grassJump2)
 pop() 
 
 //Grass 9
 push()
 scale (0.5)
-image(grass9Img,0,50-grassJump)
+image(grass9Img,0,70-grassJump)
 pop() 
 
 //Grass 10
 push()
 scale (0.5)
-image(grass10Img,0,50-grassJump2)
+image(grass10Img,0,70-grassJump2)
 pop() 
 
 
 //Fern 3
 push()
 scale (0.5)
-image(fern3Img,0,50)
+image(fern3Img,0,60)
 pop() 
 
 //Fern 1
 push()
 scale (0.5)
-image(fern1Img,0,50)
+image(fern1Img,0,60)
 pop() 
 
 //Fern 2
 push()
 scale (0.5)
-image(fern2Img,0,50)
+image(fern2Img,0,60)
 pop() 
    
 //Firefly
@@ -431,42 +379,6 @@ push()
 scale (0.15)
 image(glowTopImg,firefly6_x,firefly6_y)
 pop()  
-
-
-
-
-
-//Far away firelies
-//how to have multiple ifs 
-
-// rectMode (CENTER)
-
-    // pos = createVector(width/2, height/2);
-
-    // push()
-    // translate(pos.x, pos.y-size/2)
-    // rotate(map(sin(wobble), -1, 1, -22.5, 22.5));
-    // translate(0, size/2)
-    // rect (100,100,100,100)
-    // pop()
-    // wobble += 2
-
-
-
-
-
-// create cirlces with gradually more transparent fills
-
-
-// let glowArray = [color(),color(),color(),color()] //create a firefly glow glow, want the alpha value to change
-
-// for(let 1=0, 1<=5,i++){
-    
-//     fill (glowArray)
-//     ellipse (firefly_x+92,firefly_y+96,fireflyMap+4,fireflyMap)
-// }
-
-
 
 }
 
