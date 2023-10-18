@@ -11,6 +11,12 @@ let fern1Img;
 let fern2Img;
 let moonImg;
 let mushroomsImg; 
+let duskImg;
+let nightImg;
+
+let pos;
+let wobble = 0
+let size = 100
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
@@ -34,6 +40,8 @@ if (firstRun) {
   fern2Img = loadImage ('fern2.png')
   moonImg = loadImage ('moon.png')
   mushroomImg = loadImage ('mushroom.png')
+  duskImg = loadImage ('dusk.png')
+  nightImg = loadImage ('night.png')
   
   firstRun = false
   }
@@ -66,22 +74,35 @@ let yellow = color(254, 255, 232)
 let bright = color (204, 152, 80)
 let LerpMap = map (drum,0,200,0,1)
 let fireflyfill = lerpColor (yellow,bright,LerpMap)
-let glow = color (255, 179, 87,50)
+let glow = color (255, 179, 87,40)
 
 
 // Gradient Background 
 
-let sky2map = map(song.currentTime(), 0,256, 0, 1);
 
 
-let duskcolor = color(49, 74, 87)
-let nightcolor = color (12, 18, 28)
+// let skymap = map(song.currentTime(), 0,256, 0, 1);
 
-let skylerp = lerpColor (duskcolor,nightcolor,sky2map)
+// let duskcolor = color(65, 101, 115)
+// let nightcolor = color (12, 18, 28)
 
-fill (skylerp)
-rect(720,405,1440,810)
+// let skylerp = lerpColor (duskcolor,nightcolor,skymap)
 
+// push()
+// fill (skylerp)
+// rect(720,405,1440,810)
+// pop()
+
+skymap2 = map(song.currentTime(), 0,256, 255,0 );
+
+push()
+image (nightImg,0,0)
+pop()
+
+push()
+tint(255,skymap2)
+image (duskImg,0,0)
+pop()
 
 // let skyMap= map(song.currentTime(), 0,song.duration(), 0, 1);
 
@@ -111,30 +132,39 @@ rect(720,405,1440,810)
 
 
 // Vocal moon
+
 let moonYStart = 720;
 let moonX = width/2-140
 let moonYEnd = 100;
 
-let whenSingingStart = 25.5;
+let whenSingingStart = 27;
 let whenSingingEnd = 256;
 
 let moonYMap= map(song.currentTime(), whenSingingStart ,whenSingingEnd, moonYStart, moonYEnd);
 let moonScale= map (vocal,0,100,1,1.2)
+let moonScale1= map (vocal,0,100,1,1.3)
+let moonScale2 = map (vocal, 0,100, 1,1.5)
+let moonScale3 = map (vocal, 0,100, 1,1.7)
+
+let moonOpacitymap= map (vocal,0,100,255,100)
 
 
 if (song.currentTime() < whenSingingStart) {
   strokeWeight (0)
   push()
+  tint(255,moonOpacitymap)
   image(moonImg,moonX,moonYStart)
   pop()   
 
   } else {
 
   strokeWeight(0)
-  fill (255,255,255,50)
-  ellipse (width/2+12,moonYMap+155,300*moonScale,300*moonScale)
-  ellipse (width/2+12,moonYMap+155,350*moonScale,350*moonScale)
-  
+  fill (219, 251, 255,30)
+  ellipse (width/2+12,moonYMap+155,270*moonScale,265*moonScale)
+  ellipse (width/2+12,moonYMap+155,270*moonScale1,265*moonScale1)
+  ellipse (width/2+12,moonYMap+155,270*moonScale2,270*moonScale2)
+  ellipse (width/2+12,moonYMap+155,270*moonScale3,270*moonScale3)
+
   push()
   image(moonImg,moonX,moonYMap)
   pop() 
@@ -142,51 +172,51 @@ if (song.currentTime() < whenSingingStart) {
     }
   
 
-let littlefireflyMap = map (drum,0,100,0,15)
-let littlefireflycolourMap = map (drum,0,100,0,100)
+// let littlefireflyMap = map (drum,0,100,0,15)
+// let littlefireflycolourMap = map (drum,0,100,0,100)
 
-let littleglow = color (255, 179, 87,littlefireflycolourMap)
-let littlefill = color (254, 255, 232)
+// let littleglow = color (255, 179, 87,littlefireflycolourMap)
+// let littlefill = color (254, 255, 232)
 
-    if (drum <100) {
-      //Lower little fireflies 
-     fill (littlefill)
-     ellipse (20,270, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (20,270,littlefireflyMap+4,littlefireflyMap+4)
+//     if (drum <100) {
+//       //Lower little fireflies 
+//      fill (littlefill)
+//      ellipse (20,270, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (20,270,littlefireflyMap+4,littlefireflyMap+4)
     
-     fill (littlefill)
-     ellipse (500,610, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (500,610,littlefireflyMap+4,littlefireflyMap+4)
+//      fill (littlefill)
+//      ellipse (500,610, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (500,610,littlefireflyMap+4,littlefireflyMap+4)
     
-     fill (littlefill)
-     ellipse (550,700, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (550,700,littlefireflyMap+4,littlefireflyMap+4)
+//      fill (littlefill)
+//      ellipse (550,700, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (550,700,littlefireflyMap+4,littlefireflyMap+4)
     
-     fill (littlefill)
-     ellipse (1100,550, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (1100,550,littlefireflyMap+4,littlefireflyMap+4)
+//      fill (littlefill)
+//      ellipse (1100,550, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (1100,550,littlefireflyMap+4,littlefireflyMap+4)
     
-     fill (littlefill)
-     ellipse (1400,350, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (1400,350,littlefireflyMap+4,littlefireflyMap+4)
+//      fill (littlefill)
+//      ellipse (1400,350, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (1400,350,littlefireflyMap+4,littlefireflyMap+4)
     
-     fill (littlefill)
-     ellipse (1320,475, littlefireflyMap-2,littlefireflyMap-2)
-     fill (littleglow)
-     ellipse (1320,475,littlefireflyMap+4,littlefireflyMap+4)
+//      fill (littlefill)
+//      ellipse (1320,475, littlefireflyMap-2,littlefireflyMap-2)
+//      fill (littleglow)
+//      ellipse (1320,475,littlefireflyMap+4,littlefireflyMap+4)
         
-     } 
+//      } 
      
-     else {
-       //Lower little fireflies 
+//      else {
+//        //Lower little fireflies 
     
-           //Upper fireflies
-       }
+//            //Upper fireflies
+//        }
 //gardenbase
 push()
 scale (0.5)
@@ -289,20 +319,17 @@ pop()
 //Far away firelies
 //how to have multiple ifs 
 
-
+// rectMode (CENTER)
 
     // pos = createVector(width/2, height/2);
 
     // push()
     // translate(pos.x, pos.y-size/2)
-    // rotate(map(sin(wobble), -1, 1, -QUARTER_PI/2, QUARTER_PI/2));
+    // rotate(map(sin(wobble), -1, 1, -22.5, 22.5));
     // translate(0, size/2)
-    // fill (fireflyfill)
-    // ellipse (1300,500, fireflyMap-2,fireflyMap-2)
-    // fill (glow)
-    // ellipse (1300,500,fireflyMap+5,fireflyMap+5)
+    // rect (100,100,100,100)
     // pop()
-    // wobble += .05
+    // wobble += 2
 
 
 
