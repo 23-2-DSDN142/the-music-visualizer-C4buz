@@ -165,7 +165,7 @@ if (song.currentTime() < whenSingingStart) {
 
     }
 
-let treeshineheight = map (song.currentTime(), whenSingingStart ,whenSingingEnd, 50, 240 )
+let treeshineheight = map (song.currentTime(), whenSingingStart ,whenSingingEnd, 50, 200)
 let treeshine = map (vocal,0,100,treeshineheight,255)
 
 
@@ -217,7 +217,7 @@ image(fern4Img,0,30)
 pop() 
 
 //grass
-let grassJump = map (other, 0,100,0,72)
+let grassJump = map (other, 0,100,0,82)
 let grassJump2 = map (other, 0,100,0,90)
 let grassJump3 = map (other, 0,100,0,100)
 
@@ -225,19 +225,19 @@ let grassJump3 = map (other, 0,100,0,100)
 //Grass 1
 push()
 scale (0.5)
-image(grass1Img,0,70-grassJump3)
+image(grass1Img,0,80-grassJump3)
 pop() 
 
 //Grass 2
 push()
 scale (0.5)
-image(grass2Img,0,70-grassJump2)
+image(grass2Img,0,80-grassJump2)
 pop() 
 
 //Grass 3
 push()
 scale (0.5)
-image(grass3Img,0,70-grassJump)
+image(grass3Img,0,80-grassJump)
 pop() 
 
 //Grass 4
@@ -249,37 +249,37 @@ pop()
 //Grass 5
 push()
 scale (0.5)
-image(grass5Img,0,70-grassJump2)
+image(grass5Img,0,80-grassJump2)
 pop() 
 
 //Grass 6
 push()
 scale (0.5)
-image(grass6Img,0,70-grassJump3)
+image(grass6Img,0,80-grassJump3)
 pop() 
 
 //Grass 7
 push()
 scale (0.5)
-image(grass7Img,0,70-grassJump)
+image(grass7Img,0,80-grassJump)
 pop() 
 
 //Grass 8
 push()
 scale (0.5)
-image(grass8Img,0,70-grassJump2)
+image(grass8Img,0,80-grassJump2)
 pop() 
 
 //Grass 9
 push()
 scale (0.5)
-image(grass9Img,0,70-grassJump)
+image(grass9Img,0,80-grassJump)
 pop() 
 
 //Grass 10
 push()
 scale (0.5)
-image(grass10Img,0,70-grassJump2)
+image(grass10Img,0,80-grassJump2)
 pop() 
 
 
